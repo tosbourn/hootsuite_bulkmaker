@@ -5,7 +5,7 @@ require './tft_messages'
 MAX = 350
 count = 0
 time_count = 0
-date = Date.today
+date = Date.today + 1
 messages = TFTMessages.new.messages
 times = [
   '09:50',
@@ -18,7 +18,8 @@ times = [
 CSV.open("tft.csv", "wb") do |csv|
   while count < MAX
     messages.each do |message|
-      continue if count > MAX
+      puts "#{count} #{message.message}"
+      break if count > MAX
       if time_count > 4
         date += 1
         time_count = 0
